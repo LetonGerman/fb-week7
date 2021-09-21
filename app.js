@@ -1,4 +1,4 @@
-export default function appSrc(express, bodyParser, createReadStream, crypto, http, MongoClient) {
+export default function appSrc(express, bodyParser, createReadStream, crypto, http, MongoClient, writeFileSync) {
     const app = express();
 
     app.use(function(req, res, next) {
@@ -93,7 +93,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
             r
             .on('data', d=>b+=d)
             .on('end', () => {
-                fs.writeFileSync('index.pug', b);
+                writeFileSync('index.pug', b);
                 res.render('index', {login: 'neveraskedfor', random2, random3})
             })
         })
