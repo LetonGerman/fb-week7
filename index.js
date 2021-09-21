@@ -6,6 +6,7 @@ import http from 'http';
 import appSrc from './app.js';
 import {MongoClient} from 'mongodb';
 import { writeFileSync } from 'fs';
+import cors from './cors.js';
 
 const app = appSrc(express, bodyParser, createReadStream, crypto, http, MongoClient, writeFileSync);
 app.listen(process.env.PORT || 8080, function() {
