@@ -1,4 +1,4 @@
-export default function appSrc(express, bodyParser, createReadStream, crypto, http, MongoClient, writeFileSync) {
+export default function appSrc(express, bodyParser, createReadStream, crypto, http, MongoClient, writeFileSync, cors) {
     const app = express();
 
     app.use(function(req, res, next) {
@@ -86,6 +86,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     });
 
     app.all('/render/', async(req, res) => {
+        res.set(cors);
         const {addr} = req.query;
         const {random2, random3} = req.body;
         
