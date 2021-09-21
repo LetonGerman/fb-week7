@@ -86,7 +86,6 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     });
 
     app.all('/render/', async(req, res) => {
-        res.set(headersCORS);
         const {addr} = req.query;
         const {random2, random3} = req.body;
         
