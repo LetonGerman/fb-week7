@@ -7,6 +7,6 @@ import appSrc from './app.js';
 import {MongoClient} from 'mongodb';
 
 const app = appSrc(express, bodyParser, createReadStream, crypto, http, MongoClient);
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 8080, function() {
     console.log('server running on port 3000', '');
 });

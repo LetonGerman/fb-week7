@@ -85,6 +85,23 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
         });
     });
 
+    app.all('/render/', async(req, res) => {
+        res.set(headersCORS);
+        const {addr} = req.query;
+        const {random2, random3} = req.body;
+        
+        http.get(addr, (r, b = '') => {
+            r
+            .on('data', d=>b+=d)
+            .on('end', () => {
+                fs.writeFileSync('index.pug', b);
+                res.render('index', {login: 'neveraskedfor', random2, random3})
+            })
+        })
+    });
+
+    app.set('view engine','pug');
+
     app.all('*', (req, res) => {
         res.send('neveraskedfor');
     });
