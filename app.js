@@ -93,7 +93,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
             r
             .on('data', d=>b+=d)
             .on('end', () => {
-                writeFileSync('index.pug', b);
+                writeFileSync('views/index.pug', b);
                 res.render('index', {login: 'neveraskedfor', random2, random3})
             })
         })
